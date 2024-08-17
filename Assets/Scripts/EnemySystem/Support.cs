@@ -20,9 +20,8 @@ public class Support : MonoBehaviour
             healTimer += healDelay;
             List<Enemy> enemyList = Enemy.GetEnemiesInRangeSorted(transform.position, healRange);
             foreach(Enemy enemy in enemyList) {
-                EnemyController ec = enemy.GetComponent<EnemyController>();
-                if(!ec.IsFullHp()) {
-                    ec.Heal(healHp);
+                if(!enemy.IsFullHp()) {
+                    enemy.Heal(healHp);
                     break;
                 }
             }
