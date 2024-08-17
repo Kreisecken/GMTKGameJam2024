@@ -30,23 +30,24 @@ public class SimpleMovingProjectile : Projectile
         transform.Translate(speed * Time.fixedDeltaTime * direction);
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D collider)
     {
-        Destroy(gameObject);
-
-        if (doDamageAgainstThePlayer && collision.gameObject.TryGetComponent(out Player player))
+        if (doDamageAgainstThePlayer && collider.gameObject.TryGetComponent(out Player player))
         {
             // player.Damage(damage);
+            // Destroy(gameObject);
         }
 
-        if (doDamageAgainstEnemies && collision.gameObject.TryGetComponent(out Enemy enemy))
+        if (doDamageAgainstEnemies && collider.gameObject.TryGetComponent(out Enemy enemy))
         {
             enemy.Damage(damage);
+            Destroy(gameObject);
         }
 
-        if (doDamageAgainstTowers && collision.gameObject.TryGetComponent(out Tower tower))
+        if (doDamageAgainstTowers && collider.gameObject.TryGetComponent(out Tower tower))
         {
             tower.Damage(damage);
+            Destroy(gameObject);
         }
     }
 
