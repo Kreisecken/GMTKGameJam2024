@@ -6,7 +6,7 @@ public class SpawnerScript : MonoBehaviour
     public int spawnCount = 5;
     public float spawnDelay = 1f;
     public float startDelay = 5f;
-    public GameObject target;
+    public GameObject enemyTarget;
     
     private float spawnTimer = 0f;
     
@@ -26,7 +26,7 @@ public class SpawnerScript : MonoBehaviour
         if(spawnTimer <= 0f) {
             GameObject spawn = Instantiate(enemyPrefab);
             spawn.transform.position = transform.position;
-            spawn.GetComponent<EnemyController>().target = target;
+            spawn.GetComponent<EnemyController>().target = enemyTarget;
             
             spawnTimer += spawnDelay;
             spawnCount--;
