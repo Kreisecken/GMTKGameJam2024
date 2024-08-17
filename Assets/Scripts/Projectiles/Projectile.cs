@@ -9,4 +9,12 @@ public class Projectile : MonoBehaviour
     {
         fired = true;
     }
+
+    public static T CreateProjectile<T>(T projectilePrefab) where T : Projectile
+    {
+        T projectile = Instantiate(projectilePrefab.gameObject).GetComponent<T>();
+        projectile.gameObject.SetActive(true);
+
+        return projectile;
+    }
 }

@@ -29,7 +29,8 @@ public class SimpleAttackTower : AttackTower
             if (enemy == null) return;
 
             Vector2 enemyPosition = enemy.transform.position;
-            CreateProjectile(projectilePrefab).FireProjectile((enemyPosition - (Vector2)transform.position).normalized);
+
+            Projectile.CreateProjectile(projectilePrefab).FireProjectile((enemyPosition - (Vector2)transform.position).normalized);
 
             internalFireRate = fireRate;
         }
