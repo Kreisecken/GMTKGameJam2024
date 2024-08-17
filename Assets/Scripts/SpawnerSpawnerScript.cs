@@ -1,9 +1,11 @@
 using System;
+using Unity.Collections;
 using UnityEngine;
 
 public class SpawnerSpawnerScript : MonoBehaviour
 {
     public GameObject spawnerPrefab;
+    public GameObject[] enemyPrefabs;
     public Rect spawnArea; // spawners are spawned on the edge of the spawnArea
     public GameObject enemyTarget;
     
@@ -16,7 +18,7 @@ public class SpawnerSpawnerScript : MonoBehaviour
 
     void Update()
     {
-        timeElapsed += Time.deltaTime;
+        timeElapsed += Time.deltaTime * 10f;
         spawnDelay -= Time.deltaTime;
         if(spawnDelay <= 0f) Spawn();
     }
@@ -30,13 +32,14 @@ public class SpawnerSpawnerScript : MonoBehaviour
         for(int i = 0; i < spawnerCount; i++) {
             int enemyCount = UnityEngine.Random.Range((int) (2f + Mathf.Pow(timeElapsed + 10f, 0.625f) / 4f), (int) (3.6f + Mathf.Pow(timeElapsed + 10f, 0.75f) / 4f));
             float enemyDelay = UnityEngine.Random.Range(Mathf.Max(1f - 0.005f * timeElapsed, 0.2f), Mathf.Max(2f - 0.01f * timeElapsed, 1f));
-            // TODO: enemy type
+            int enemyType = UnityEngine.Random.Range(0, Mathf.Min((int) (1f + timeElapsed / 30f), enemyPrefabs.Length));
             
             GameObject spawner = Instantiate(spawnerPrefab);
             spawner.transform.position = randomSpawnerPosition();
             SpawnerScript spawnerScript = spawner.GetComponent<SpawnerScript>();
             spawnerScript.spawnCount = enemyCount;
             spawnerScript.spawnDelay = enemyDelay;
+            spawnerScript.enemyPrefab = enemyPrefabs[enemyType];
             spawnerScript.enemyTarget = enemyTarget;
         }
     }

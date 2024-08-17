@@ -432,6 +432,22 @@ PrefabInstance:
       propertyPath: enemyTarget
       value: 
       objectReference: {fileID: 1854015209}
+    - target: {fileID: 1048883867183252404, guid: 557a6c3ab4a053b4293e2b92e0da7b10, type: 3}
+      propertyPath: enemyPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048883867183252404, guid: 557a6c3ab4a053b4293e2b92e0da7b10, type: 3}
+      propertyPath: 'enemyPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6191512741893426085, guid: 9fcef007422fd5448b1c54bd0bbe9e0f, type: 3}
+    - target: {fileID: 1048883867183252404, guid: 557a6c3ab4a053b4293e2b92e0da7b10, type: 3}
+      propertyPath: 'enemyPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6191512741893426085, guid: 601a3a0afd9a3e14cb35a8d570b11477, type: 3}
+    - target: {fileID: 1048883867183252404, guid: 557a6c3ab4a053b4293e2b92e0da7b10, type: 3}
+      propertyPath: 'enemyPrefabs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 6191512741893426085, guid: a64d560e1055e5041812f27e0c24e150, type: 3}
     - target: {fileID: 2328891772879709605, guid: 557a6c3ab4a053b4293e2b92e0da7b10, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -528,6 +544,10 @@ PrefabInstance:
     - target: {fileID: 2383257904865505743, guid: 9fcef007422fd5448b1c54bd0bbe9e0f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887642708454427546, guid: 9fcef007422fd5448b1c54bd0bbe9e0f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6191512741893426085, guid: 9fcef007422fd5448b1c54bd0bbe9e0f, type: 3}
       propertyPath: m_Name

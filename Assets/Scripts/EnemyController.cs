@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public float movementSpeed = 1f;
+    public int hp = 10;
     public GameObject target;
     
     void Start()
@@ -13,5 +14,10 @@ public class EnemyController : MonoBehaviour
     {
         Vector2 move = (target.transform.position - transform.position).normalized;
         GetComponent<Rigidbody2D>().linearVelocity = move * movementSpeed;
+    }
+    
+    public void Damage(int dmg) {
+        hp -= dmg;
+        if(hp <= 0) Destroy(gameObject);
     }
 }
