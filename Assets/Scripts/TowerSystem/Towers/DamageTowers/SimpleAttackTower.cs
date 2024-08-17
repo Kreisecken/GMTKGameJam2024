@@ -1,23 +1,37 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class SimpleAttackTower : AttackTower
 {
+    [Header("Simple Attack Tower Properties")]
     public SimpleMovingProjectile projectilePrefab;
-
+    public float range = 1f;
+    public GameObject rangeIndicator;
     public float fireRate = 1f;
+
+    private float internalFireRate;
 
     public new void Update()
     {
-        if (fireRate < 0) return;
+        if (!placed) return;
 
-        fireRate -= Time.deltaTime;
+        //rangeIndicator.transform.parent = null;
+        rangeIndicator.transform.localScale = new Vector3(range, range, 1f);
+        //rangeIndicator.transform.parent = gameObject.transform;
 
-        if (fireRate <= 0)
+        internalFireRate -= Time.deltaTime;
+
+        if (internalFireRate <= 0)
         {
-            Vector2 enemyPosition = Enemy.ClosestEnemy(transform.position, towerStats.range).transform.position;
+            Enemy enemy = Enemy.ClosestEnemy(transform.position, range);
+
+            if (enemy == null) return;
+
+            Vector2 enemyPosition = enemy.transform.position;
             CreateProjectile(projectilePrefab).FireProjectile((enemyPosition - (Vector2)transform.position).normalized);
-            fireRate = 1f;
+
+            internalFireRate = fireRate;
         }
     }
 }

@@ -5,6 +5,8 @@ public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
 
+    public float Money;
+
     public void Start()
     {
         if (Instance == null)
