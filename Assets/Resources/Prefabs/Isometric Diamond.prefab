@@ -105,3 +105,6 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   damage: 1
   lifetime: 5
+  doDamageAgainstThePlayer: 0
+  doDamageAgainstEnemies: 1
+  doDamageAgainstTowers: 0

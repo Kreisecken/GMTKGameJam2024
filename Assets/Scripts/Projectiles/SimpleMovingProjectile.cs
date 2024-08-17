@@ -41,12 +41,12 @@ public class SimpleMovingProjectile : Projectile
 
         if (doDamageAgainstEnemies && collision.gameObject.TryGetComponent(out Enemy enemy))
         {
-            // enemy.Damage(damage);
+            enemy.Damage(damage);
         }
 
         if (doDamageAgainstTowers && collision.gameObject.TryGetComponent(out Tower tower))
         {
-            // tower.Damage(damage);
+            tower.Damage(damage);
         }
     }
 
