@@ -15,16 +15,12 @@ public class SpawnerScript : MonoBehaviour
     
     void Start()
     {
+        spawnTimer += startDelay;
         while(spawnCounts[enemyIndex] <= 0 && enemyIndex < spawnCounts.Length - 1) enemyIndex++;
     }
 
     void FixedUpdate()
     {
-        if(startDelay > 0f) {
-            startDelay -= Time.fixedDeltaTime;
-            return;
-        }
-        
         spawnTimer -= Time.fixedDeltaTime;
         if(spawnTimer <= 0f) {
             // GameObject spawn = Instantiate(enemyPrefab);
