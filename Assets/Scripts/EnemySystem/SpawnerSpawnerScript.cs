@@ -10,17 +10,17 @@ public class SpawnerSpawnerScript : MonoBehaviour
     public GameObject enemyTarget;
     private float waveDuration = 30f;
     
-    private bool running = false;
+    private bool running = false; // true if a wave is currently active
     private int currentWave = 1;
-    private float timeElapsed = 0f;
+    private float timeElapsed = 0f; // total time elapsed in all rounds so far
     private float spawnDelay = 0f;
     
     void FixedUpdate()
     {
         if(running) {
-            timeElapsed += Time.fixedDeltaTime * 10f;
+            timeElapsed += Time.fixedDeltaTime * 10f; // TODO: remove " * 10f"
             
-            spawnDelay -= Time.fixedDeltaTime * 10f;
+            spawnDelay -= Time.fixedDeltaTime * 10f; // TODO: remove " * 10f"
             if(spawnDelay <= 0f) Spawn();
             
             if(timeElapsed >= currentWave * waveDuration) {
@@ -38,7 +38,7 @@ public class SpawnerSpawnerScript : MonoBehaviour
     
     private void Spawn()
     {
-        // the most magic numbers I have ever written in one function // comment about random looking formulas // comment about comment
+        // expressions for different enemy stats that are slightly random and generally get more difficult as time (timeElapsed) goes on
         float nextDelay = UnityEngine.Random.Range(Mathf.Max(10f - 0.02f * timeElapsed, 3.0f), Mathf.Max(8f - 0.02f * timeElapsed, 2.0f));
         float spawnerCountAvg = 1f + Mathf.Pow(timeElapsed, 0.75f) / 50f;
         int spawnerCount = (int) spawnerCountAvg + (UnityEngine.Random.Range(0f, 1f) < (spawnerCountAvg % 1f) ? 1 : 0);
@@ -54,6 +54,7 @@ public class SpawnerSpawnerScript : MonoBehaviour
                 randomEnemyCount(-7.6f, 0.7f, -5.3f, 0.7f)
             };
             
+            // create spawner
             GameObject spawner = Instantiate(spawnerPrefab);
             spawner.transform.position = randomSpawnerPosition();
             SpawnerScript spawnerScript = spawner.GetComponent<SpawnerScript>();
@@ -72,7 +73,7 @@ public class SpawnerSpawnerScript : MonoBehaviour
         );
     }
     
-    private Vector2 randomSpawnerPosition()
+    private Vector2 randomSpawnerPosition() // gets a random position on the edge of spawnArea
     {
         float fac = UnityEngine.Random.Range(0f, 2f * spawnArea.width + 2f * spawnArea.height);
         if(fac < spawnArea.width) return new Vector2(spawnArea.x + fac, spawnArea.y);
