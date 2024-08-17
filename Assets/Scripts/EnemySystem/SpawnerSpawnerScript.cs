@@ -8,15 +8,32 @@ public class SpawnerSpawnerScript : MonoBehaviour
     // public GameObject[] enemyPrefabs;
     public Rect spawnArea; // spawners are spawned on the edge of the spawnArea
     public GameObject enemyTarget;
+    private float waveDuration = 30f;
     
+    private bool running = false;
+    private int currentWave = 1;
     private float timeElapsed = 0f;
     private float spawnDelay = 0f;
     
     void FixedUpdate()
     {
-        timeElapsed += Time.fixedDeltaTime * 10f;
-        spawnDelay -= Time.fixedDeltaTime;
-        if(spawnDelay <= 0f) Spawn();
+        if(running) {
+            timeElapsed += Time.fixedDeltaTime * 10f;
+            
+            spawnDelay -= Time.fixedDeltaTime * 10f;
+            if(spawnDelay <= 0f) Spawn();
+            
+            if(timeElapsed >= currentWave * waveDuration) {
+                running = false;
+                currentWave++;
+            }
+        }
+    }
+    
+    public void StartRound() {
+        if(!running) {
+            running = true;
+        }
     }
     
     private void Spawn()
