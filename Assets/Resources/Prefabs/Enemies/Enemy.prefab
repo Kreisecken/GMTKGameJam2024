@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2383257904865505743}
   - component: {fileID: 5411653706907088250}
   - component: {fileID: 507187715749958955}
-  - component: {fileID: 8096155095159506051}
   - component: {fileID: 6697847699099842373}
+  - component: {fileID: 8096155095159506051}
   - component: {fileID: 5144202973330995873}
+  - component: {fileID: 6192303753154794483}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -118,21 +119,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &8096155095159506051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6191512741893426085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 469740cded56ca04f9cb5ad3e644ad81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 1
-  maxHp: 10
-  target: {fileID: 0}
 --- !u!61 &6697847699099842373
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -179,6 +165,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &8096155095159506051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6191512741893426085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 469740cded56ca04f9cb5ad3e644ad81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 1
+  maxHp: 10
+  target: {fileID: 0}
 --- !u!114 &5144202973330995873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,3 +192,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2fad0d078b91e46a732b731cf1848f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6192303753154794483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6191512741893426085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 095cb3c5b1f5bd84c9771c47489bc54a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 1
+  attackRange: 8
+  attackDelay: 1
+  projectilePrefab: {fileID: 7828760312937690093, guid: 41a2d5f27abf55d41b5db03995adfc99, type: 3}
