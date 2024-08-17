@@ -16,14 +16,15 @@ public class SpawnerSpawnerScript : MonoBehaviour
     {
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        timeElapsed += Time.deltaTime * 10f;
-        spawnDelay -= Time.deltaTime;
+        timeElapsed += Time.fixedDeltaTime * 10f;
+        spawnDelay -= Time.fixedDeltaTime;
         if(spawnDelay <= 0f) Spawn();
     }
     
-    private void Spawn() {
+    private void Spawn()
+    {
         float nextDelay = UnityEngine.Random.Range(Mathf.Max(10f - 0.02f * timeElapsed, 3.0f), Mathf.Max(8f - 0.02f * timeElapsed, 2.0f));
         float spawnerCountAvg = 1f + Mathf.Pow(timeElapsed, 0.75f) / 50f;
         int spawnerCount = (int) spawnerCountAvg + (UnityEngine.Random.Range(0f, 1f) < (spawnerCountAvg % 1f) ? 1 : 0);
@@ -44,7 +45,8 @@ public class SpawnerSpawnerScript : MonoBehaviour
         }
     }
     
-    private Vector2 randomSpawnerPosition() {
+    private Vector2 randomSpawnerPosition()
+    {
         float fac = UnityEngine.Random.Range(0f, 2f * spawnArea.width + 2f * spawnArea.height);
         if(fac < spawnArea.width) return new Vector2(spawnArea.x + fac, spawnArea.y);
         if(fac < spawnArea.width + spawnArea.height) return new Vector2(spawnArea.x + spawnArea.width, spawnArea.y + (fac - spawnArea.width));

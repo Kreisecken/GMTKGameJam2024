@@ -7,14 +7,22 @@ public class PlayerController : MonoBehaviour
     
     private InputAction moveAction;
     
+    private Vector2 moveInput = Vector2.zero;
+    private Rigidbody2D rb;
+    
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         moveAction = InputSystem.actions.FindAction("Move");
     }
 
     void Update()
     {
-        Vector2 movement = moveAction.ReadValue<Vector2>().normalized;
-        GetComponent<Rigidbody2D>().linearVelocity = movement * movementSpeed;
+        moveInput = moveAction.ReadValue<Vector2>();
+    }
+
+    void FixedUpdate()
+    {
+        rb.linearVelocity = moveInput * movementSpeed;
     }
 }

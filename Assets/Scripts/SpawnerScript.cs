@@ -12,17 +12,16 @@ public class SpawnerScript : MonoBehaviour
     
     void Start()
     {
-        
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(startDelay > 0f) {
-            startDelay -= Time.deltaTime;
+            startDelay -= Time.fixedDeltaTime;
             return;
         }
         
-        spawnTimer -= Time.deltaTime;
+        spawnTimer -= Time.fixedDeltaTime;
         if(spawnTimer <= 0f) {
             GameObject spawn = Instantiate(enemyPrefab);
             spawn.transform.position = transform.position;
