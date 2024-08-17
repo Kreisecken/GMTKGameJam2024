@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     public float movementSpeed = 3f;
     
-    public InputAction moveAction;
+    private InputAction moveAction;
     
     void Start()
     {
