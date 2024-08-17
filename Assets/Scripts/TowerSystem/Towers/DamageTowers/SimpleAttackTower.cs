@@ -14,10 +14,10 @@ public class SimpleAttackTower : AttackTower
 
     public new void Update()
     {
+        rangeIndicator.transform.localScale = new Vector3(range, range, 1f);
         if (!placed) return;
 
         //rangeIndicator.transform.parent = null;
-        rangeIndicator.transform.localScale = new Vector3(range, range, 1f);
         //rangeIndicator.transform.parent = gameObject.transform;
 
         internalFireRate -= Time.deltaTime;
@@ -30,7 +30,7 @@ public class SimpleAttackTower : AttackTower
 
             Vector2 enemyPosition = enemy.transform.position;
 
-            Projectile.CreateProjectile(projectilePrefab).FireProjectile((enemyPosition - (Vector2)transform.position).normalized);
+            Projectile.CreateProjectile(projectilePrefab).FireProjectile(transform.position, (enemyPosition - (Vector2)transform.position).normalized);
 
             internalFireRate = fireRate;
         }

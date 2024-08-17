@@ -534,10 +534,10 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2794675268308131209}
   placed: 0
   colliding: 0
-  growthRate: {x: 1, y: 1, z: 0}
+  growthRate: {x: -1, y: -1, z: 0}
   cost: 1
   sellRate: 0.5
   projectilePrefab: {fileID: 315073486898938755, guid: 69d8e348a6a80dd459372f56f9efae5d, type: 3}
-  range: 1
+  range: 5
   rangeIndicator: {fileID: 1473758242655349767}
   fireRate: 1

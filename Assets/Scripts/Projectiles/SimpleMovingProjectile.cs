@@ -50,8 +50,9 @@ public class SimpleMovingProjectile : Projectile
         }
     }
 
-    public void FireProjectile(Vector2 direction, float speedMultiplier = 1f)
+    public void FireProjectile(Vector2 position, Vector2 direction, float speedMultiplier = 1f)
     {
+        this.transform.position = position;
         this.direction = direction;
         speed *= speedMultiplier;
 
