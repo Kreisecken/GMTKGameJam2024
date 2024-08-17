@@ -1,12 +1,13 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+#nullable enable
 public class TowerInstantiator : MonoBehaviour
 {
-    public GameObject towerPrefab; // debug
+    public Tower towerPrefab; // debug
 
-    private GameObject towerPreview;
-    private Tower tower;
+    private Tower? tower = null;
 
     private static TowerInstantiator towerInstantiator;
 
@@ -24,30 +25,29 @@ public class TowerInstantiator : MonoBehaviour
 
     public void Update()
     {
-        if (towerPreview == null) return;
+        if (tower == null) return;
 
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         
-        towerPreview.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
+        tower.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
 
         if (Keyboard.current.spaceKey.wasPressedThisFrame && !tower.colliding)
         {
             tower.Place();
-            towerPreview = null;
+            tower = null;
         }
     }
 
-    public void OnMouseDown()
+    public void OnMouseDown() // DEBUG
     {
-        if (towerPreview != null) return;
+        if (tower != null) return;
 
         InstantiateTower(towerPrefab);
     }
 
-    public static void InstantiateTower(GameObject towerPrefab)
+    public static void InstantiateTower(Tower towerPrefab)
     {
-        towerInstantiator.towerPreview = Instantiate(towerPrefab);
-        towerInstantiator.tower = towerInstantiator.towerPreview.GetComponent<Tower>();
-        towerInstantiator.towerPreview.SetActive(true);
+        towerInstantiator.tower = Instantiate(towerPrefab.gameObject).GetComponent<Tower>();
+        towerInstantiator.tower.gameObject.SetActive(true);
     }
 }

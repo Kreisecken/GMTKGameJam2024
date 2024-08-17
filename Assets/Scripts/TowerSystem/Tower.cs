@@ -14,10 +14,10 @@ public class Tower : MonoBehaviour
     public bool placed = false;
     public bool colliding = false;
 
-    private TowerStats towerStats;
-    private SpriteRenderer spriteRenderer;
+    public TowerStats towerStats;
+    public SpriteRenderer spriteRenderer;
 
-    public void Start()
+    public void Awake()
     {
         towerStats = GetComponent<TowerStats>();
         spriteRenderer = GetComponent<SpriteRenderer>();
