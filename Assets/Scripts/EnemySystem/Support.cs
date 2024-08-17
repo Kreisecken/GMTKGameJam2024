@@ -9,10 +9,6 @@ public class Support : MonoBehaviour
     
     private float healTimer = 0f;
     
-    void Start()
-    {
-    }
-
     void FixedUpdate()
     {
         healTimer -= Time.fixedDeltaTime;

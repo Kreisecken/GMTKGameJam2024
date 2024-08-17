@@ -12,10 +12,6 @@ public class SpawnerSpawnerScript : MonoBehaviour
     private float timeElapsed = 0f;
     private float spawnDelay = 0f;
     
-    void Start()
-    {
-    }
-
     void FixedUpdate()
     {
         timeElapsed += Time.fixedDeltaTime * 10f;

@@ -27,7 +27,6 @@ public class SpawnerScript : MonoBehaviour
         
         spawnTimer -= Time.fixedDeltaTime;
         if(spawnTimer <= 0f) {
-            
             // GameObject spawn = Instantiate(enemyPrefab);
             GameObject spawn = Instantiate(enemyPrefabs[enemyIndex]);
             spawn.transform.position = transform.position;

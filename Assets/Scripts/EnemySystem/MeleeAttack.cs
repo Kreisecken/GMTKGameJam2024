@@ -8,10 +8,6 @@ public class MeleeAttack : MonoBehaviour
     
     private float attackTimer = 0f;
     
-    void Start()
-    {
-    }
-
     void FixedUpdate()
     {
         attackTimer -= Time.fixedDeltaTime;
