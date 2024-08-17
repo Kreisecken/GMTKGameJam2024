@@ -3,28 +3,27 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public float movementSpeed = 1f;
-    public int maxHp = 10;
+    public float maxHp = 10;
     public GameObject target;
-    public GameObject hpBarFull;
     
-    private int hp;
+    private float hp;
     
     void Start()
     {
         hp = maxHp;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Vector2 move = (target.transform.position - transform.position).normalized;
         GetComponent<Rigidbody2D>().linearVelocity = move * movementSpeed;
     }
     
-    public void Damage(int dmg) {
+    public void Damage(float dmg) {
         hp -= dmg;
-        float hpBarValue = (float) hp / maxHp;
-        hpBarFull.transform.localScale = new Vector3(hpBarValue, 1f, 1f);
-        hpBarFull.transform.localPosition = new Vector3(0.5f * hpBarValue - 0.5f, 0f, -1f);
-        if(hp <= 0) Destroy(gameObject);
+        
+        float scale = Mathf.Pow(hp / maxHp, 0.75f);
+        transform.localScale = new Vector3(scale, scale, 0f);
+        if(hp < 1f) Destroy(gameObject);
     }
 }
