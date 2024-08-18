@@ -2,52 +2,63 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-#nullable enable
 public class TowerInstantiator : MonoBehaviour
 {
+    public static TowerInstantiator Instance;
+
+    [Header("TowerSystem Properties")]
     public Tower towerPrefab; // debug
 
-    private Tower? tower = null;
+    public ContactFilter2D growthBlockerFilter;
 
-    private static TowerInstantiator towerInstantiator;
+    private Tower towerThatsGettingPlaced = null;
+    private Action<Tower> successTowerPlacedCallback = null;
 
     public void Start()
     {
-        if (towerInstantiator == null)
+        if (Instance == null)
         {
-            towerInstantiator = this;
+            Instance = this;
             return;
         }
 
-        Destroy(towerInstantiator.gameObject);
+        Destroy(Instance.gameObject);
         Debug.Log("TowerInstantiator already exists. Destroying new instance.");
     }
 
     public void Update()
     {
-        if (tower == null) return;
+        if (towerThatsGettingPlaced == null) return;
 
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         
-        tower.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
+        towerThatsGettingPlaced.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
 
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && !tower.colliding)
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && !towerThatsGettingPlaced.colliding)
         {
-            tower.Place();
-            tower = null;
+            towerThatsGettingPlaced.Place();
+            towerThatsGettingPlaced = null;
+            successTowerPlacedCallback?.Invoke(towerThatsGettingPlaced);
         }
     }
 
     public void OnMouseDown() // DEBUG
     {
-        if (tower != null) return;
+        if (towerThatsGettingPlaced != null) return;
 
         InstantiateTower(towerPrefab);
     }
 
-    public static void InstantiateTower(Tower towerPrefab)
+    public static void InstantiateTower(Tower towerPrefab, Action<Tower> callback = null)
     {
-        towerInstantiator.tower = Instantiate(towerPrefab.gameObject).GetComponent<Tower>();
-        towerInstantiator.tower.gameObject.SetActive(true);
+        if (Instance.towerThatsGettingPlaced != null) 
+        {
+            Destroy(Instance.towerThatsGettingPlaced.gameObject);
+        }
+
+        Instance.towerThatsGettingPlaced = Instantiate(towerPrefab.gameObject).GetComponent<Tower>();
+        Instance.towerThatsGettingPlaced.gameObject.SetActive(true);
+
+        Instance.successTowerPlacedCallback = callback;
     }
 }

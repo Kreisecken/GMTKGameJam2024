@@ -76,4 +76,10 @@ public class Enemy : MonoBehaviour
         var enemies = GetEnemiesInRangeSorted(position, range);
         return enemies.Count > 0 ? enemies[0] : null;
     }
+
+    public static bool TryGetClosestEnemy(Vector3 position, float range, out Enemy enemy)
+    {
+        enemy = ClosestEnemy(position, range);
+        return enemy != null;
+    }
 }

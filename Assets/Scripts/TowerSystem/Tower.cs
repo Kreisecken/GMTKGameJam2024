@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,13 +9,15 @@ public class Tower : MonoBehaviour
 {
     public static List<Tower> Towers = new();
 
+    public static Tower selectedTower = null;
+
     public Vector3 MINIMUM_SCALE_THRESHOLD => new(0.1f, 0.1f, 0.1f);
 
     private Vector3 Scale => transform.localScale;
 
     [Header("Tower Components")]
 
-    public BoxCollider2D placementCollider;
+    public BoxCollider2D  placementCollider;
     public SpriteRenderer spriteRenderer;
 
     [Header("Tower Placement & Growth Flags")]
@@ -52,14 +55,6 @@ public class Tower : MonoBehaviour
         
         if (colliding) spriteRenderer.color = Color.red;
         else spriteRenderer.color = Color.gray;
-
-    }
-
-    public void Place()
-    {
-        placed = true;
-        placementCollider.isTrigger = false;
-        spriteRenderer.color = Color.white;
     }
 
     public void FixedUpdate()
@@ -69,10 +64,19 @@ public class Tower : MonoBehaviour
         colliding = placementCollider.Overlap(colliders) > 0; // maybe exclude player
 
         if (!placed) return;
-    
-        //if (colliding) return;
 
-        //transform.localScale += Time.fixedDeltaTime * growthRate;
+        if (selectedTower == this)
+        {
+            if (Keyboard.current[Key.Delete].wasPressedThisFrame)
+            {
+                Destroy(gameObject);
+            }
+
+            if (Keyboard.current[Key.Escape].wasPressedThisFrame)
+            {
+                selectedTower = null;
+            }
+        }
 
         CalculateCollisions();
 
@@ -87,6 +91,28 @@ public class Tower : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void OnMouseOver()
+    {
+        if (!placed) return;
+
+        if (Keyboard.current[Key.Delete].isPressed)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void OnMouseDown()
+    {
+        selectedTower = selectedTower == this ? null : this;
+    }
+
+    public void Place()
+    {
+        placed = true;
+        placementCollider.isTrigger = false;
+        spriteRenderer.color = Color.white;
     }
 
     public void CalculateCollisions()
@@ -104,15 +130,24 @@ public class Tower : MonoBehaviour
         Vector3 bottomLeft  = position + new Vector3(-scale.x / 2, -scale.y / 2, 0);
         Vector3 bottomRight = position + new Vector3( scale.x / 2, -scale.y / 2, 0);
 
-        Collider2D[] leftCollisions  = Physics2D.OverlapAreaAll(topLeft   + new Vector3(-0.1f,  0   ), bottomLeft );
-        Collider2D[] rightCollisions = Physics2D.OverlapAreaAll(topRight  + new Vector3( 0.1f,  0   ), bottomRight);
-        Collider2D[] upCollisions    = Physics2D.OverlapAreaAll(topLeft   + new Vector3( 0   ,  0.1f), topRight   );
-        Collider2D[] downCollisions  = Physics2D.OverlapAreaAll(bottomLeft+ new Vector3( 0   , -0.1f), bottomRight);
-       
-        left  = leftCollisions .Length > 1;
-        right = rightCollisions.Length > 1;
-        up    = upCollisions   .Length > 1;
-        down  = downCollisions .Length > 1;
+        List<Collider2D> leftCollisions = new();
+        List<Collider2D> rightCollision = new();
+        List<Collider2D> upCollisions   = new();
+        List<Collider2D> downCollisions = new();
+
+        int leftCollisionsCount  = Physics2D.OverlapArea(topLeft    + new Vector3(-0.1f,  0   ), bottomLeft , TowerInstantiator.Instance.growthBlockerFilter, leftCollisions);
+        int rightCollisionsCount = Physics2D.OverlapArea(topRight   + new Vector3( 0.1f,  0   ), bottomRight, TowerInstantiator.Instance.growthBlockerFilter, rightCollision);
+        int upCollisionsCount    = Physics2D.OverlapArea(topLeft    + new Vector3( 0   ,  0.1f), topRight   , TowerInstantiator.Instance.growthBlockerFilter, upCollisions  );
+        int downCollisionsCount  = Physics2D.OverlapArea(bottomLeft + new Vector3( 0   , -0.1f), bottomRight, TowerInstantiator.Instance.growthBlockerFilter, downCollisions);
+
+        left  = leftCollisionsCount  > 1;
+        right = rightCollisionsCount > 1;
+        up    = upCollisionsCount    > 1;
+        down  = downCollisionsCount  > 1;
+
+        Debug.Log($"Left: {leftCollisionsCount}, Right: {rightCollisionsCount}, Up: {upCollisionsCount}, Down: {downCollisionsCount}");
+
+        upCollisions.ForEach(collider => Debug.Log(collider.gameObject.name));
     }
 
     public void Damage(float damage)
@@ -122,7 +157,7 @@ public class Tower : MonoBehaviour
 
     public void Damage(Vector2 damage)
     {
-        transform.localScale -= new Vector3(damage.x, damage.y, 0);
+        transform.localScale -= (Vector3)damage;
     }
 
     public static List<Tower> GetTowersInRange(Vector3 position, float range)
@@ -146,34 +181,16 @@ public class Tower : MonoBehaviour
         towers.Sort((a, b) => Vector3.Distance(a.transform.position, position).CompareTo(Vector3.Distance(b.transform.position, position)));
         return towers;
     }
-
+    
     public static Tower ClosestTower(Vector3 position, float range) 
     {
         var towers = GetTowersInRangeSorted(position, range);
         return towers.Count > 0 ? towers[0] : null;
     }
 
-    public void OnDrawGizmos()
+    public static bool TryGetClosestTower(Vector3 position, float range, out Tower tower)
     {
-        Vector3 position = transform.position;
-        Vector3 scale    = transform.localScale;
-
-        Vector3 topLeft     = position + new Vector3(-scale.x / 2,  scale.y / 2, 0);
-        Vector3 topRight    = position + new Vector3( scale.x / 2,  scale.y / 2, 0);
-        Vector3 bottomLeft  = position + new Vector3(-scale.x / 2, -scale.y / 2, 0);
-        Vector3 bottomRight = position + new Vector3( scale.x / 2, -scale.y / 2, 0);
-
-        var testA = topLeft   + new Vector3(-0.1f,  0   );//, bottomLeft );
-        var testB = topRight  + new Vector3( 0.1f,  0   );//, bottomRight);
-        var testC = topLeft   + new Vector3( 0   ,  0.1f);//, topRight   );
-        var testD = bottomLeft+ new Vector3( 0   , -0.1f);//, bottomRight);
-
-        Gizmos.color = Color.red;
-
-        //Draw Area
-        Gizmos.DrawLine(testA, bottomLeft );
-        Gizmos.DrawLine(testB, bottomRight);
-        Gizmos.DrawLine(testC, topRight   );
-        Gizmos.DrawLine(testD, bottomRight);
+        tower = ClosestTower(position, range);
+        return tower != null;
     }
 }

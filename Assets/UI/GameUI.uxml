@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Stylesheet.uss?fileID=7433441132597879392&amp;guid=e1ea0652d8acfbb41a3dc4ac0c8e616d&amp;type=3#Stylesheet" />
+    <ui:Label text="Label" style="left: 0; top: 0; -unity-text-align: upper-center; align-self: flex-start; position: absolute; transform-origin: left top; height: 331px; width: 581px;" />
+    <ui:GroupBox style="left: 0; bottom: 0; top: 0; right: 0; position: absolute; align-items: center; justify-content: flex-end; align-self: center; align-content: center; flex-direction: column; flex-wrap: wrap-reverse; flex-grow: 1; flex-shrink: 1; flex-basis: auto;">
+        <ui:GroupBox name="GroupBox" style="bottom: 0; top: auto; position: absolute; left: auto; right: auto; flex-basis: 0; flex-direction: row; flex-wrap: nowrap; flex-grow: 0; flex-shrink: 0; justify-content: space-evenly; align-content: center; align-self: auto; align-items: center; height: 24%; width: 55%;">
+            <ui:Button text="Button" name="Button" class="button" />
+            <ui:Button text="Button" name="Button" class="button" />
+            <ui:Button text="Button" name="Button" class="button" />
+        </ui:GroupBox>
+    </ui:GroupBox>
+</ui:UXML>

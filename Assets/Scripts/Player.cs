@@ -18,4 +18,9 @@ public class Player : MonoBehaviour
         Destroy(gameObject);
         Debug.Log("Player already exists. Destroying new instance.");
     }
+
+    public void Damage(float damage)
+    {
+
+    }
 }

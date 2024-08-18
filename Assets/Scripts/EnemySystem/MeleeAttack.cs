@@ -11,10 +11,14 @@ public class MeleeAttack : MonoBehaviour
     void FixedUpdate()
     {
         attackTimer -= Time.fixedDeltaTime;
-        if(attackTimer <= 0f) {
+        if(attackTimer <= 0f) 
+        {
             attackTimer += attackDelay;
-            Tower tower = Tower.ClosestTower(transform.position, attackRange);
-            if(tower != null) tower.Damage(attackDamage);
+
+            if (Tower.TryGetClosestTower(transform.position, attackRange, out Tower tower)) 
+            {
+                tower.Damage(attackDamage);
+            }
         }
     }
 }
