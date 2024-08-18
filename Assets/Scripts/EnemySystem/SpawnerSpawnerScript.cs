@@ -48,10 +48,19 @@ public class SpawnerSpawnerScript : MonoBehaviour
             // int enemyCount = UnityEngine.Random.Range((int) (2f + Mathf.Pow(timeElapsed + 10f, 0.625f) / 4f), (int) (3.6f + Mathf.Pow(timeElapsed + 10f, 0.75f) / 4f));
             float enemyDelay = UnityEngine.Random.Range(Mathf.Max(1f - 0.005f * timeElapsed, 0.2f), Mathf.Max(2f - 0.01f * timeElapsed, 1f));
             // int enemyType = UnityEngine.Random.Range(0, Mathf.Min((int) (1f + timeElapsed / 30f), enemyPrefabs.Length));
-            int[] enemyCounts = {
-                randomEnemyCount(-1f, 0.5f, -0.3f, 0.5f),
-                randomEnemyCount(3f, 0.75f, 5f, 0.625f),
-                randomEnemyCount(-7.6f, 0.7f, -5.3f, 0.7f)
+            // int[] enemyCounts = {
+            //     randomEnemyCount(-1f, 0.5f, -0.3f, 0.5f),
+            //     randomEnemyCount(3f, 0.75f, 5f, 0.625f),
+            //     randomEnemyCount(-7.6f, 0.7f, -5.3f, 0.7f)
+            // };
+            int[] enemyCounts = { // TODO: adjust values
+                randomEnemyCount(0f, 0.5f, 1f, 0.5f),
+                randomEnemyCount(0f, 0.5f, 1f, 0.5f),
+                randomEnemyCount(0f, 0.5f, 1f, 0.5f),
+                randomEnemyCount(0f, 0.5f, 1f, 0.5f),
+                randomEnemyCount(0f, 0.5f, 1f, 0.5f),
+                randomEnemyCount(0f, 0.5f, 1f, 0.5f),
+                randomEnemyCount(0f, 0.5f, 1f, 0.5f)
             };
             
             // create spawner

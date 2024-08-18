@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 2383257904865505743}
   - component: {fileID: 5411653706907088250}
   - component: {fileID: 507187715749958955}
-  - component: {fileID: 3315035750194976636}
+  - component: {fileID: 3265782365950631247}
   - component: {fileID: 8096155095159506051}
-  - component: {fileID: -6988997831516678873}
-  - component: {fileID: 1067125595700869524}
+  - component: {fileID: -6418434906704741182}
+  - component: {fileID: 4062144087018401714}
   m_Layer: 0
-  m_Name: Enemy2
+  m_Name: EnemyHealer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.754717, g: 0.41088498, b: 0.08899963, a: 1}
+  m_Color: {r: 1, g: 0.76368445, b: 0.5424528, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -119,7 +119,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &3315035750194976636
+--- !u!61 &3265782365950631247
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,9 +177,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469740cded56ca04f9cb5ad3e644ad81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0.5
+  movementSpeed: 2
   target: {fileID: 0}
---- !u!114 &-6988997831516678873
+--- !u!114 &-6418434906704741182
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,8 +191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2fad0d078b91e46a732b731cf1848f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 20
---- !u!114 &1067125595700869524
+  maxHp: 5
+--- !u!114 &4062144087018401714
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,9 +201,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6191512741893426085}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 963707ea0d2973c46857f074bbe6a014, type: 3}
+  m_Script: {fileID: 11500000, guid: e7be47f9a425c1a498fd09adafe81c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 1
-  attackRange: 1
-  attackDelay: 1
+  healHp: 5
+  healRange: 3
+  healDelay: 3

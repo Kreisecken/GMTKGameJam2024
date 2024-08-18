@@ -17,6 +17,7 @@ public class SpawnerScript : MonoBehaviour
     {
         spawnTimer += startDelay;
         while(spawnCounts[enemyIndex] <= 0 && enemyIndex < spawnCounts.Length - 1) enemyIndex++; // select next enemy type
+        if(spawnCounts[enemyIndex] <= 0 && enemyIndex >= spawnCounts.Length - 1) Destroy(gameObject); // Destroy if no enemies should be spawned
     }
 
     void FixedUpdate()
@@ -27,6 +28,7 @@ public class SpawnerScript : MonoBehaviour
             GameObject spawn = Instantiate(enemyPrefabs[enemyIndex]);
             spawn.transform.position = transform.position;
             spawn.GetComponent<EnemyController>().target = enemyTarget;
+            if(spawn.TryGetComponent(out SpawnerScript spawnerScript)) spawnerScript.enemyTarget = enemyTarget; // for spawning summoner enemies
             
             spawnTimer += spawnDelay;
             // spawnCount--;
