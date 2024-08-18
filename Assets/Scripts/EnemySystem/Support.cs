@@ -14,6 +14,8 @@ public class Support : MonoBehaviour
         healTimer -= Time.fixedDeltaTime;
         if(healTimer <= 0f) {
             healTimer += healDelay;
+            
+            // heal nearest enemy that needs healing
             List<Enemy> enemyList = Enemy.GetEnemiesInRangeSorted(transform.position, healRange);
             foreach(Enemy enemy in enemyList) {
                 if(!enemy.IsFullHp()) {
