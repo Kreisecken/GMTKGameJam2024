@@ -11,35 +11,33 @@ public class Tower : MonoBehaviour
 
     public static Tower selectedTower = null;
 
-    public Vector3 MINIMUM_SCALE_THRESHOLD => new(0.1f, 0.1f, 0.1f);
+    public static Vector3 MINIMUM_SCALE_THRESHOLD => new(0.1f, 0.1f, 0.1f);
 
-    private Vector3 Scale => transform.localScale;
+    [Header("Tower Properties")]
+    public Vector3 growthRate = new(0f, 0f, 0f);
 
-    [Header("Tower Components")]
+    public Sprite icon;
+    public Sprite banner;
+    public string title = "Tower";
+    public string description = "A tower";
 
+    //[Header("Tower Components")]
     public BoxCollider2D  placementCollider;
     public SpriteRenderer spriteRenderer;
 
-    [Header("Tower Placement & Growth Flags")]
-    
-    public bool placed = false;
-    public bool colliding = false;
+    //[Header("Tower Placement & Growth Flags")]
+    public bool placed    = false;
+    private bool colliding = false;
 
-    public bool left = false;
-    public bool right = false;
-    public bool up = false;
-    public bool down = false;
-
-    [Header("Tower Properties")]
-    public Vector3 growthRate = new(1f, 1f, 0f);
-    public float cost = 1f;
-    public float sellRate = 0.5f;
+    private bool left  = false;
+    private bool right = false;
+    private bool up    = false;
+    private bool down  = false;
 
     public void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         placementCollider = GetComponent<BoxCollider2D>();
-        placementCollider.isTrigger = true;
 
         Towers.Add(this);
     }
@@ -47,14 +45,6 @@ public class Tower : MonoBehaviour
     public void OnDestroy()
     {
         Towers.Remove(this);
-    }
-
-    public void Update()
-    {
-        if (placed) return;
-        
-        if (colliding) spriteRenderer.color = Color.red;
-        else spriteRenderer.color = Color.gray;
     }
 
     public void FixedUpdate()
@@ -93,6 +83,12 @@ public class Tower : MonoBehaviour
         }
     }
 
+    public void Place()
+    {
+        placed = true;
+        placementCollider.isTrigger = false;
+    }
+
     public void OnMouseOver()
     {
         if (!placed) return;
@@ -106,13 +102,6 @@ public class Tower : MonoBehaviour
     public void OnMouseDown()
     {
         selectedTower = selectedTower == this ? null : this;
-    }
-
-    public void Place()
-    {
-        placed = true;
-        placementCollider.isTrigger = false;
-        spriteRenderer.color = Color.white;
     }
 
     public void CalculateCollisions()
@@ -144,10 +133,6 @@ public class Tower : MonoBehaviour
         right = rightCollisionsCount > 1;
         up    = upCollisionsCount    > 1;
         down  = downCollisionsCount  > 1;
-
-        Debug.Log($"Left: {leftCollisionsCount}, Right: {rightCollisionsCount}, Up: {upCollisionsCount}, Down: {downCollisionsCount}");
-
-        upCollisions.ForEach(collider => Debug.Log(collider.gameObject.name));
     }
 
     public void Damage(float damage)

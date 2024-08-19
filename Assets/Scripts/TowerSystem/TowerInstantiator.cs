@@ -7,12 +7,12 @@ public class TowerInstantiator : MonoBehaviour
     public static TowerInstantiator Instance;
 
     [Header("TowerSystem Properties")]
-    public Tower towerPrefab; // debug
+    public TowerPreview towerPreviewPrefab;
+    public bool IsPreviewing { get; private set; }
 
     public ContactFilter2D growthBlockerFilter;
 
-    private Tower towerThatsGettingPlaced = null;
-    private Action<Tower> successTowerPlacedCallback = null;
+    private TowerPreview towerPreview;
 
     public void Start()
     {
@@ -26,39 +26,43 @@ public class TowerInstantiator : MonoBehaviour
         Debug.Log("TowerInstantiator already exists. Destroying new instance.");
     }
 
-    public void Update()
+    public static void PlaceTowerUsingPreview(PlaceableTower towerPrefab, Vector3 position, Action<Tower> successTowerPlacedCallback = null, Action<Tower> failTowerPlacedCallback = null)
     {
-        if (towerThatsGettingPlaced == null) return;
+        Instance.IsPreviewing = true;
 
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        
-        towerThatsGettingPlaced.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
+        GameObject towerPreview = Instantiate(Instance.towerPreviewPrefab.gameObject);
+        towerPreview.transform.position = position;
+        Instance.towerPreview = towerPreview.GetComponent<TowerPreview>();
 
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && !towerThatsGettingPlaced.colliding)
+        towerPreview.SetActive(true);
+
+        Instance.towerPreview.PreviewTower(towerPrefab, (tower) =>
         {
-            towerThatsGettingPlaced.Place();
-            towerThatsGettingPlaced = null;
-            successTowerPlacedCallback?.Invoke(towerThatsGettingPlaced);
+            Instance.IsPreviewing = false;
+            successTowerPlacedCallback?.Invoke(tower);
+        }, (tower) =>
+        {
+            Instance.IsPreviewing = false;
+            failTowerPlacedCallback?.Invoke(tower);
+        });
+    }
+
+    public static void CancelPreview()
+    {
+        if (Instance.IsPreviewing)
+        {
+            Instance.towerPreview.StopPreview();
+            Instance.IsPreviewing = false;
         }
     }
 
-    public void OnMouseDown() // DEBUG
+    public static void InstantiateTower(PlaceableTower towerPrefab, Vector3 position, Action<Tower> successTowerPlacedCallback = null, Action<Tower> failTowerPlacedCallback = null)
     {
-        if (towerThatsGettingPlaced != null) return;
-
-        InstantiateTower(towerPrefab);
-    }
-
-    public static void InstantiateTower(Tower towerPrefab, Action<Tower> callback = null)
-    {
-        if (Instance.towerThatsGettingPlaced != null) 
-        {
-            Destroy(Instance.towerThatsGettingPlaced.gameObject);
-        }
-
-        Instance.towerThatsGettingPlaced = Instantiate(towerPrefab.gameObject).GetComponent<Tower>();
-        Instance.towerThatsGettingPlaced.gameObject.SetActive(true);
-
-        Instance.successTowerPlacedCallback = callback;
+        GameObject tower = Instantiate(towerPrefab.gameObject);
+        tower.transform.position = position;
+        tower.SetActive(true);
+        PlaceableTower towerComponent = tower.GetComponent<PlaceableTower>();
+        towerComponent.Place();
+        successTowerPlacedCallback?.Invoke(towerComponent);
     }
 }

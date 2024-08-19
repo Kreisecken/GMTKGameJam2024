@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class SimpleAttackTower : AttackTower
+public class SimpleAttackTower : PlaceableTower
 {
     [Header("Simple Attack Tower Properties")]
     public GameObject rangeIndicator;
