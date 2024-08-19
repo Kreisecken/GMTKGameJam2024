@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; justify-content: center;">
+        <ui:Label text="Game Over!" style="display: flex; visibility: visible; overflow: visible; flex-wrap: nowrap; align-items: stretch; justify-content: flex-start; align-self: center; align-content: auto; flex-direction: column; -unity-text-align: upper-center; font-size: 50px; color: rgb(255, 255, 255);" />
+    </ui:VisualElement>
+</ui:UXML>

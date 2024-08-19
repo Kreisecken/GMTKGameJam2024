@@ -14,6 +14,8 @@ public class EnemyController : MonoBehaviour
     
     void FixedUpdate()
     {
+        if(target == null) return;
+        
         Vector2 move = (target.transform.position - transform.position).normalized;
         rb.linearVelocity = move * movementSpeed;
     }
