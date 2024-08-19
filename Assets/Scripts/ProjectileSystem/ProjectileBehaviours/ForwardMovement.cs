@@ -10,7 +10,7 @@ public class ForwardMovement : ProjectileBehaviour
 
     public override void FixedUpdate(Projectile projectile)
     {
-        projectile.Rigidbody2D.linearVelocity = projectile.transform.up * speed;
+        projectile.Rigidbody2D.linearVelocity = projectile.transform.right * speed;
     }
 
     public override T Clone<T>()

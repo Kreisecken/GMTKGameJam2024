@@ -249,6 +249,8 @@ MonoBehaviour:
   forwardMovement:
     direction: {x: 0, y: 0}
     speed: 5
+  damageOnHit:
+    damage: 1
   pierce:
     pierce: 1
   decayOverTime:
@@ -257,5 +259,5 @@ MonoBehaviour:
     target: {fileID: 0}
     angleSpeed: 180
     distance: 10
-  range: 1
+  range: 5
   fireRate: 0.1

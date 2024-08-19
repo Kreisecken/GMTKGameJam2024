@@ -23,7 +23,7 @@ public class ProjectileInstantiator : MonoBehaviour
     {
         Projectile projectile = Instantiate(Instance.projectilePrefab.gameObject).GetComponent<Projectile>();
 
-        projectile.transform.position = position;
+        projectile.transform.position = new Vector3(position.x, position.y, Instance.projectilePrefab.transform.position.z);
         projectile.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
 
         return projectile;

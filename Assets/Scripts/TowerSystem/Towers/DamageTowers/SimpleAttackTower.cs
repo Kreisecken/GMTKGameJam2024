@@ -9,6 +9,7 @@ public class SimpleAttackTower : PlaceableTower
 
     public ProjectileSprite projectileSprite;
     public ForwardMovement  forwardMovement;
+    public DamageOnHit      damageOnHit;
     public Pierce           pierce;
     public DecayOverTime    decayOverTime;
     public Homing           homing;
@@ -18,7 +19,7 @@ public class SimpleAttackTower : PlaceableTower
 
     private float internalFireRate;
 
-    public new void Update()
+    public void Update()
     {
         //rangeIndicator.transform.parent = null;
         rangeIndicator.transform.localScale = new Vector3(range, range, 1f);
@@ -30,19 +31,22 @@ public class SimpleAttackTower : PlaceableTower
 
         if (internalFireRate <= 0)
         {
-            //if (!Enemy.TryGetClosestEnemy(transform.position, range, out Enemy enemy)) return;
+            if (!Enemy.TryGetClosestEnemy(transform.position, range, out Enemy enemy)) return;
 
-            //Vector2 enemyPosition = enemy.transform.position;
+            Vector2 enemyPosition = enemy.transform.position;
 
-            Vector2 playerPosition = Player.Instance.transform.position;
-
-            ProjectileInstantiator.CreateProjectile(transform.position, (playerPosition - (Vector2)transform.position).normalized)
-                .InteractWithPlayer()
+            // Vector2 playerPosition = Player.Instance.transform.position;
+            Debug.Log("Fire Projectile");
+            // ProjectileInstantiator.CreateProjectile(transform.position, (playerPosition - (Vector2)transform.position).normalized)
+            ProjectileInstantiator.CreateProjectile(transform.position, (enemyPosition - (Vector2)transform.position).normalized)
+                // .InteractWithPlayer()
+                .InteractWithEnemies()
                 .AddBehaviour(projectileSprite)
                 .AddBehaviour(forwardMovement)
+                .AddBehaviour(damageOnHit)
                 .AddBehaviour(decayOverTime.Clone())
                 .AddBehaviour(pierce.Clone())
-                .AddBehaviour(homing.WithTarget(Player.Instance.gameObject))
+                // .AddBehaviour(homing.WithTarget(Player.Instance.gameObject))
             .FireProjectile();
 
             internalFireRate = fireRate;

@@ -148,27 +148,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ecea2d688fdf034da3c4724590f6d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementCollider: {fileID: 1873122111820911156}
-  spriteRenderer: {fileID: 8435420070142686825}
-  placed: 0
-  colliding: 0
-  left: 0
-  right: 0
-  up: 0
-  down: 0
   growthRate: {x: 1, y: 1, z: 0}
-  price: 500
   icon: {fileID: 3124352740388889510, guid: cfb5596cc96d6bf4cab0c3f85c80422e, type: 3}
   banner: {fileID: 3124352740388889510, guid: cfb5596cc96d6bf4cab0c3f85c80422e, type: 3}
   title: Attack Tower
   description: A tower
-  sellRate: 0.5
+  placementCollider: {fileID: 1873122111820911156}
+  spriteRenderer: {fileID: 8435420070142686825}
+  placed: 0
   rangeIndicator: {fileID: 8145395521657683061}
   projectileSprite:
     sprite: {fileID: 6812895125178730584, guid: 3e7be7bca448e3943b9dc8ad09523855, type: 3}
   forwardMovement:
     direction: {x: 0, y: 0}
     speed: 5
+  damageOnHit:
+    damage: 1
   pierce:
     pierce: 1
   decayOverTime:
@@ -177,7 +172,7 @@ MonoBehaviour:
     target: {fileID: 0}
     angleSpeed: 180
     distance: 10
-  range: 1
+  range: 5
   fireRate: 0.1
 --- !u!1 &8145395521657683061
 GameObject:
