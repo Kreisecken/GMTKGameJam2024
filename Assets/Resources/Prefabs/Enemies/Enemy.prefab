@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6697847699099842373}
   - component: {fileID: 8096155095159506051}
   - component: {fileID: 5144202973330995873}
-  - component: {fileID: 2666824931320331343}
+  - component: {fileID: 6192303753154794483}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -105,7 +105,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 0.5
   m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 963707ea0d2973c46857f074bbe6a014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 1
+  attackDamage: 0.01
   attackRange: 2
   attackDelay: 1
   lifeStealFactor: 0

@@ -105,7 +105,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 0.5
   m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -204,7 +204,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095cb3c5b1f5bd84c9771c47489bc54a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 1
+  attackDamage: 0.01
   attackRange: 8
   attackDelay: 1
-  projectilePrefab: {fileID: 7828760312937690093, guid: 41a2d5f27abf55d41b5db03995adfc99, type: 3}
+  projectileSprite:
+    sprite: {fileID: 6812895125178730584, guid: 3e7be7bca448e3943b9dc8ad09523855, type: 3}
+  forwardMovement:
+    direction: {x: 0, y: 0}
+    speed: 5
+  damageOnHit:
+    damage: 0.01
+  pierce:
+    pierce: 1
+  decayOverTime:
+    lifetime: 5
