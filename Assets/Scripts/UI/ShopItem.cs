@@ -15,6 +15,6 @@ public class ShopItem : MonoBehaviour
         this.tower = tower;
 
         image      .sprite = tower.spriteRenderer.sprite;
-        //price      .text   = tower.price.ToString();
+        price      .text   = tower.price.ToString();
     }
 }

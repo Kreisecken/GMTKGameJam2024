@@ -7,7 +7,8 @@ public class Enemy : MonoBehaviour
 {
     public static List<Enemy> Enemies { get; private set; } = new();
     
-    public float maxHp = 10;
+    public float maxHp = 10f;
+    public int moneyOnDeath = 10;
 
     private float hp;
 
@@ -24,6 +25,7 @@ public class Enemy : MonoBehaviour
     public void OnDestroy()
     {
         Enemies.Remove(this);
+        PlayerInventory.Instance.AddMoney(moneyOnDeath); // TODO: drop collectable money instead (if the player was not removed)
     }
 
     public void Damage(float dmg) {

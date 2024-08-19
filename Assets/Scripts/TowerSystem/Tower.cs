@@ -20,6 +20,7 @@ public class Tower : MonoBehaviour
     public Sprite banner;
     public string title = "Tower";
     public string description = "A tower";
+    public int price = 100;
 
     //[Header("Tower Components")]
     public BoxCollider2D  placementCollider;

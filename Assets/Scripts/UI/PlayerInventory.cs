@@ -1,3 +1,5 @@
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -11,6 +13,10 @@ public class PlayerInventory : MonoBehaviour
 
     public int selected = 1;
 
+    public TMP_Text moneyLabel;
+
+    private int money = 1000;
+
     public void Awake()
     {
         if (Instance == null)
@@ -21,6 +27,11 @@ public class PlayerInventory : MonoBehaviour
 
         Destroy(Instance.gameObject);
         Debug.Log("PlayerInventory already exists. Destroying new instance.");
+    }
+    
+    void Start()
+    {
+        moneyLabel.text = money.ToString();
     }
 
     public void Update()
@@ -49,6 +60,8 @@ public class PlayerInventory : MonoBehaviour
         TowerInstantiator.PlaceTowerUsingPreview(towers[selected], Mouse.current.position.ReadValue(), (tower) =>
         {
             towers[selected] = null;
+            // ShopMenu.Instance.currentTowerItem = null;
+            ShopMenu.Instance.ClearCurrentTowerItem();
             selected = -1;
         }, (tower) =>
         {
@@ -80,5 +93,22 @@ public class PlayerInventory : MonoBehaviour
         }
 
         return false;
+    }
+    
+    public int GetMoney()
+    {
+        return money;
+    }
+    
+    public void AddMoney(int amount)
+    {
+        money += amount;
+        moneyLabel.text = money.ToString();
+    }
+    
+    public void RemoveMoney(int amount)
+    {
+        money -= amount;
+        moneyLabel.text = money.ToString();
     }
 }

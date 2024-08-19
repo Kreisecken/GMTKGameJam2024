@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class ShopMenu : MonoBehaviour
 {
+    public const float SELL_FACTOR = 0.5f;
+    
     public static ShopMenu Instance;
 
     public GameObject shopMenuContent;
@@ -97,7 +99,6 @@ public class ShopMenu : MonoBehaviour
         UpdateMenu(towerItem.tower);
     }
 
-
     public void UpdateMenu(PlaceableTower tower)
     {
         if (tower == null)
@@ -114,11 +115,18 @@ public class ShopMenu : MonoBehaviour
 
         button.GetComponentInChildren<TMP_Text>().text = isBuying ? "Buy" : "Sell";
     }
+    
+    public void ClearCurrentTowerItem()
+    {
+        currentTowerItem = null;
+        CloseMenu();
+    }
 
     public void Open()
     {
         isOpen = true;
         shopMenuContent.SetActive(true);
+        if(currentShopItem != null) UpdateMenu(currentShopItem);
     }
 
     public void Close()
@@ -130,9 +138,11 @@ public class ShopMenu : MonoBehaviour
     public void Buy()
     {
         if (currentShopItem == null) return;
+        if (PlayerInventory.Instance.GetMoney() < currentShopItem.tower.price) return;
 
         if (!PlayerInventory.Instance.TryAddTower(currentShopItem.tower)) return;
 
+        PlayerInventory.Instance.RemoveMoney(currentShopItem.tower.price);
         Debug.Log("Bought " + currentShopItem.tower.name);
     }
 
@@ -142,6 +152,7 @@ public class ShopMenu : MonoBehaviour
 
         if (!PlayerInventory.Instance.TryRemoveTower(currentTowerItem)) return;
 
+        PlayerInventory.Instance.AddMoney((int) (currentShopItem.tower.price * SELL_FACTOR));
         Debug.Log("Sold " + currentShopItem.tower.name);
 
         CloseMenu();
