@@ -16,8 +16,7 @@ public class SpawnerScript : MonoBehaviour
     void Start()
     {
         spawnTimer += startDelay;
-        while(spawnCounts[enemyIndex] <= 0 && enemyIndex < spawnCounts.Length - 1) enemyIndex++; // select next enemy type
-        if(spawnCounts[enemyIndex] <= 0 && enemyIndex >= spawnCounts.Length - 1) Destroy(gameObject); // Destroy if no enemies should be spawned
+        UpdateEnemyIndex();
     }
 
     void FixedUpdate()
@@ -34,8 +33,16 @@ public class SpawnerScript : MonoBehaviour
             // spawnCount--;
             spawnCounts[enemyIndex]--;
             // if(spawnCount <= 0) Destroy(gameObject);
-            while(spawnCounts[enemyIndex] <= 0 && enemyIndex < spawnCounts.Length - 1) enemyIndex++; // select next enemy type
-            if(spawnCounts[enemyIndex] <= 0 && enemyIndex >= spawnCounts.Length - 1) Destroy(gameObject); // Destroy if the last enemy was spawned
+            UpdateEnemyIndex();
+        }
+    }
+    
+    private void UpdateEnemyIndex() // also Destroys itself if there are no more enemies to spawn
+    {
+        while(spawnCounts[enemyIndex] <= 0 && enemyIndex < spawnCounts.Length - 1) enemyIndex++; // select next enemy type
+        if(spawnCounts[enemyIndex] <= 0 && enemyIndex >= spawnCounts.Length - 1) { // Destroy if no more enemies should be spawned
+            if(TryGetComponent(out Enemy enemy)) Destroy(this);
+            else Destroy(gameObject);
         }
     }
 }
