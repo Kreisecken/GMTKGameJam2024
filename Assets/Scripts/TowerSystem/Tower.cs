@@ -4,6 +4,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Tower : MonoBehaviour
 {
@@ -15,6 +16,18 @@ public class Tower : MonoBehaviour
 
     [Header("Tower Properties")]
     public Vector3 growthRate = new(0f, 0f, 0f);
+
+    public Vector3 growthBuyed = new(0, 0, 0);
+
+    public int verticalPrice = 100;
+    public int horizontalPrice = 100;
+
+    public float growthSpeed = 0.1f;
+
+    public float horizontalAmount = 1f;
+    public float horizontalMax  = 1f;
+    public float verticalAmout = 1f;
+    public float verticalMax = 1f;
 
     public Sprite icon;
     public Sprite banner;
@@ -82,12 +95,24 @@ public class Tower : MonoBehaviour
 
         CalculateCollisions();
 
-        transform.localScale += new Vector3
-        (
-            left || right ? 0 : growthRate.x,
-            up   || down  ? 0 : growthRate.y,
-            0
-        ) * Time.fixedDeltaTime;
+        Vector3 growth;
+
+        if (growthBuyed != Vector3.zero)
+        {
+            growthBuyed = Vector3.Lerp(growthBuyed, Vector3.zero, growthSpeed);
+            growth = growthBuyed;
+        }
+        else
+        {
+            growth = new Vector3
+            (
+                left || right ? 0 : growthRate.x,
+                up || down ? 0 : growthRate.y,
+                0
+            );
+        }
+
+        transform.localScale += growth * Time.fixedDeltaTime;
 
         if (transform.localScale.x < MINIMUM_SCALE_THRESHOLD.x || transform.localScale.y < MINIMUM_SCALE_THRESHOLD.y)
         {
@@ -189,5 +214,27 @@ public class Tower : MonoBehaviour
     {
         tower = ClosestTower(position, range);
         return tower != null;
+    }
+
+    public void BuyVertical()
+    {
+        if (growthBuyed.y >= verticalMax) return;
+
+        if (verticalPrice > PlayerInventory.Instance.GetGreenCrystal()) return;
+
+        PlayerInventory.Instance.RemoveGreenCrystal(verticalPrice);
+
+        growthBuyed.y += verticalAmout;
+    }
+
+    public void BuyHorizontal()
+    {
+        if (growthBuyed.x >= horizontalMax) return;
+
+        if (horizontalPrice > PlayerInventory.Instance.GetBlueCrystal()) return;
+
+        PlayerInventory.Instance.RemoveBlueCrystal(horizontalPrice);
+
+        growthBuyed.x += horizontalAmount;
     }
 }

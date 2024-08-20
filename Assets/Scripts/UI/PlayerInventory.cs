@@ -14,8 +14,12 @@ public class PlayerInventory : MonoBehaviour
     public int selected = 1;
 
     public TMP_Text moneyLabel;
+    public TMP_Text greenCrystalLabel;
+    public TMP_Text blueCrystalLabel;
 
     private int money = 1000;
+    private int greenCrystal = 1000;
+    private int blueCrystal = 1000;
 
     public void Awake()
     {
@@ -32,6 +36,8 @@ public class PlayerInventory : MonoBehaviour
     void Start()
     {
         moneyLabel.text = money.ToString();
+        greenCrystalLabel.text = greenCrystal.ToString();
+        blueCrystalLabel.text = blueCrystal.ToString();
     }
 
     public void Update()
@@ -99,6 +105,16 @@ public class PlayerInventory : MonoBehaviour
     {
         return money;
     }
+
+    public int GetGreenCrystal()
+    {
+        return greenCrystal;
+    }
+
+    public int GetBlueCrystal()
+    {
+        return blueCrystal;
+    }
     
     public void AddMoney(int amount)
     {
@@ -110,5 +126,29 @@ public class PlayerInventory : MonoBehaviour
     {
         money -= amount;
         moneyLabel.text = money.ToString();
+    }
+
+    public void AddGreenCrystal(int amount)
+    {
+        greenCrystal += amount;
+        greenCrystalLabel.text = greenCrystal.ToString();
+    }
+
+    public void AddBlueCrystal(int amount)
+    {
+        blueCrystal += amount;
+        blueCrystalLabel.text = blueCrystal.ToString();
+    }
+
+    public void RemoveGreenCrystal(int amount)
+    {
+        greenCrystal -= amount;
+        greenCrystalLabel.text = greenCrystal.ToString();
+    }
+
+    public void RemoveBlueCrystal(int amount)
+    {
+        blueCrystal -= amount;
+        blueCrystalLabel.text = blueCrystal.ToString();
     }
 }
