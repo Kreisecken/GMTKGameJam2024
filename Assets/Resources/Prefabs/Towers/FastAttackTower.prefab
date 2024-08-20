@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1704169408200446661}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2509804}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -167,7 +167,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3044911555476299917, guid: dc7d6506e629d7e4f99c1ea8bc220823, type: 3}
+  m_Sprite: {fileID: -7245253820238253342, guid: bb77e07d182fc334f918adba758c1505, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -216,7 +216,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.9375, y: 0.9375}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -237,22 +237,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growthRate: {x: 1, y: 1, z: 0}
-  icon: {fileID: -3044911555476299917, guid: dc7d6506e629d7e4f99c1ea8bc220823, type: 3}
-  banner: {fileID: -3044911555476299917, guid: dc7d6506e629d7e4f99c1ea8bc220823, type: 3}
+  icon: {fileID: -7245253820238253342, guid: bb77e07d182fc334f918adba758c1505, type: 3}
+  banner: {fileID: -7245253820238253342, guid: bb77e07d182fc334f918adba758c1505, type: 3}
   title: Fast Attack Tower
   description: C tower
-  price: 100
+  price: 500
+  rangeIndicator: {fileID: 1704169408200446661}
   placementCollider: {fileID: 3477205542754066613}
   spriteRenderer: {fileID: 575776360995957515}
   placed: 0
-  rangeIndicator: {fileID: 1704169408200446661}
   projectileSprite:
-    sprite: {fileID: 6812895125178730584, guid: 3e7be7bca448e3943b9dc8ad09523855, type: 3}
+    sprite: {fileID: -8311422632471493301, guid: 3693027b9cbe1514da4687c75e7112b4, type: 3}
+    animator: {fileID: 1160356261127867848, guid: 3693027b9cbe1514da4687c75e7112b4, type: 3}
   forwardMovement:
     direction: {x: 0, y: 0}
     speed: 5
   damageOnHit:
-    damage: 1
+    damage: 3
   pierce:
     pierce: 1
   decayOverTime:
@@ -273,7 +274,7 @@ Animator:
   m_GameObject: {fileID: 6495093361252962344}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bf6e0332fa6dba24cbaa97ca8b984f84, type: 2}
+  m_Controller: {fileID: 5554207978260866524, guid: bb77e07d182fc334f918adba758c1505, type: 3}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

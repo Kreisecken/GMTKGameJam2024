@@ -82,8 +82,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.7529412, g: 0.4117647, b: 0.09019608, a: 1}
+  m_Sprite: {fileID: -2439172296680753379, guid: 7254653bd37de0c48b85109360a39a20, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -157,8 +157,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.36363637, y: 0.5833334}
+    oldSize: {x: 0.6875, y: 0.75}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -194,6 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 10
   moneyOnDeath: 10
+  deathAnimationTime: 0
 --- !u!114 &6192303753154794483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +211,8 @@ MonoBehaviour:
   attackRange: 8
   attackDelay: 1
   projectileSprite:
-    sprite: {fileID: 6812895125178730584, guid: 3e7be7bca448e3943b9dc8ad09523855, type: 3}
+    sprite: {fileID: -8311422632471493301, guid: 3693027b9cbe1514da4687c75e7112b4, type: 3}
+    animator: {fileID: 1160356261127867848, guid: 3693027b9cbe1514da4687c75e7112b4, type: 3}
   forwardMovement:
     direction: {x: 0, y: 0}
     speed: 5
