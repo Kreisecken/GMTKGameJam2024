@@ -370,6 +370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 10
   moneyOnDeath: 10
+  deathAnimationTime: 0
 --- !u!114 &2519037499488980969
 MonoBehaviour:
   m_ObjectHideFlags: 0

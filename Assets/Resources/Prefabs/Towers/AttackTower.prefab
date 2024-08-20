@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3124352740388889510, guid: cfb5596cc96d6bf4cab0c3f85c80422e, type: 3}
+  m_Sprite: {fileID: 1402278300905310618, guid: 47ddd465dc4f52644abf077832ef1113, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -129,7 +129,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.9375, y: 0.9375}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -150,24 +150,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growthRate: {x: 1, y: 1, z: 0}
-  icon: {fileID: 3124352740388889510, guid: cfb5596cc96d6bf4cab0c3f85c80422e, type: 3}
-  banner: {fileID: 3124352740388889510, guid: cfb5596cc96d6bf4cab0c3f85c80422e, type: 3}
+  icon: {fileID: 1402278300905310618, guid: 47ddd465dc4f52644abf077832ef1113, type: 3}
+  banner: {fileID: 1402278300905310618, guid: 47ddd465dc4f52644abf077832ef1113, type: 3}
   title: Attack Tower
   description: A tower
-  price: 100
+  price: 200
+  rangeIndicator: {fileID: 8145395521657683061}
   placementCollider: {fileID: 1873122111820911156}
   spriteRenderer: {fileID: 8435420070142686825}
   placed: 0
-  rangeIndicator: {fileID: 8145395521657683061}
   projectileSprite:
-    sprite: {fileID: 6812895125178730584, guid: 3e7be7bca448e3943b9dc8ad09523855, type: 3}
+    sprite: {fileID: 8386046605285993334, guid: 5af143a3e16fb3d4d8903beb9097461a, type: 3}
+    animator: {fileID: 1160356261127867848, guid: 5af143a3e16fb3d4d8903beb9097461a, type: 3}
   forwardMovement:
     direction: {x: 0, y: 0}
     speed: 5
   damageOnHit:
-    damage: 1
+    damage: 5
   pierce:
-    pierce: 1
+    pierce: 2
   decayOverTime:
     lifetime: 5
   homing:
@@ -175,7 +176,7 @@ MonoBehaviour:
     angleSpeed: 180
     distance: 10
   range: 5
-  fireRate: 0.1
+  fireRate: 0.5
 --- !u!95 &-4964974298461241841
 Animator:
   serializedVersion: 7
@@ -186,7 +187,7 @@ Animator:
   m_GameObject: {fileID: 457411931946604169}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bf6e0332fa6dba24cbaa97ca8b984f84, type: 2}
+  m_Controller: {fileID: -7078182323685507425, guid: 47ddd465dc4f52644abf077832ef1113, type: 3}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -224,7 +225,7 @@ Transform:
   m_GameObject: {fileID: 8145395521657683061}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -275,7 +276,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2509804}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
