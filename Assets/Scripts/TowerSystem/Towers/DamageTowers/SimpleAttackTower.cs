@@ -22,7 +22,7 @@ public class SimpleAttackTower : PlaceableTower
     public void Update()
     {
         //rangeIndicator.transform.parent = null;
-        rangeIndicator.transform.localScale = new Vector3(range, range, 1f);
+        rangeIndicator.transform.localScale = new Vector3(range * 2f / transform.localScale.x, range * 2f / transform.localScale.y, 1f);
         //rangeIndicator.transform.parent = gameObject.transform;
 
         if (!placed) return;
