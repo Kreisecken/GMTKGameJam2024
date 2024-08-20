@@ -157,13 +157,19 @@ public class Tower : MonoBehaviour
         transform.localScale -= (Vector3)damage;
     }
 
+    public Rect GetRect()
+    {
+        return new Rect(transform.position - transform.localScale * 0.5f, transform.localScale);
+    }
+
     public static List<Tower> GetTowersInRange(Vector3 position, float range)
     {
         List<Tower> towersInRange = new();
 
         foreach (var tower in Towers)
         {
-            if (Vector3.Distance(position, tower.transform.position) <= range)
+            // if (Vector3.Distance(position, tower.transform.position) <= range)
+            if (PointRectDistance(position, tower.GetRect()) <= range)
             {
                 towersInRange.Add(tower);
             }
@@ -175,7 +181,8 @@ public class Tower : MonoBehaviour
     public static List<Tower> GetTowersInRangeSorted(Vector3 position, float range)
     {
         var towers = GetTowersInRange(position, range);
-        towers.Sort((a, b) => Vector3.Distance(a.transform.position, position).CompareTo(Vector3.Distance(b.transform.position, position)));
+        // towers.Sort((a, b) => Vector3.Distance(a.transform.position, position).CompareTo(Vector3.Distance(b.transform.position, position)));
+        towers.Sort((a, b) => PointRectDistance(position, a.GetRect()).CompareTo(PointRectDistance(position, b.GetRect())));
         return towers;
     }
     
@@ -189,5 +196,14 @@ public class Tower : MonoBehaviour
     {
         tower = ClosestTower(position, range);
         return tower != null;
+    }
+    
+    private static float PointRectDistance(Vector2 point, Rect rect)
+    {
+        Vector2 distance = new Vector2(
+            Mathf.Max(rect.xMin - point.x, 0f, point.x - rect.xMax),
+            Mathf.Max(rect.yMin - point.y, 0f, point.y - rect.yMax)
+        );
+        return distance.magnitude;
     }
 }
