@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class SimpleAttackTower : PlaceableTower
 {
     [Header("Simple Attack Tower Properties")]
-    public GameObject rangeIndicator;
+
 
     public ProjectileSprite projectileSprite;
     public ForwardMovement  forwardMovement;

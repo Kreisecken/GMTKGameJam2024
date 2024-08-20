@@ -6,5 +6,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlaceableTower : Tower
-{
+{   
+    
 }

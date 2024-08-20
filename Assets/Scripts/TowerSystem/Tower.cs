@@ -23,6 +23,8 @@ public class Tower : MonoBehaviour
     public int price = 100;
 
     //[Header("Tower Components")]
+    public GameObject rangeIndicator;
+
     public BoxCollider2D  placementCollider;
     public SpriteRenderer spriteRenderer;
 
@@ -67,7 +69,16 @@ public class Tower : MonoBehaviour
             {
                 selectedTower = null;
             }
+
+            rangeIndicator.SetActive(true);
+            //transform.rotation = Quaternion.Euler(Vector3.Lerp(transform.rotation.eulerAngles, new(0, 0f, 45f), 0.1f));
         }
+        else
+        {
+            rangeIndicator.SetActive(false);
+        }
+
+        Debug.Log(selectedTower);
 
         CalculateCollisions();
 
