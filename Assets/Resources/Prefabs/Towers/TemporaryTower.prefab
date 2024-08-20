@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 66871924030787747}
   - component: {fileID: -4964974298461241841}
   m_Layer: 0
-  m_Name: SlowAttackTower
+  m_Name: TemporaryTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,26 +149,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ecea2d688fdf034da3c4724590f6d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthRate: {x: 1, y: 1, z: 0}
+  growthRate: {x: -0.025, y: -0.025, z: 0}
+  growthBuyed: {x: 0, y: 0, z: 0}
+  verticalPrice: 100
+  horizontalPrice: 100
+  growthSpeed: 0.1
+  horizontalAmount: 1
+  horizontalMax: 1
+  verticalAmout: 1
+  verticalMax: 1
   icon: {fileID: 8394306113243808932, guid: 9f3a3f4d1e3340345b529b2c57bb5793, type: 3}
   banner: {fileID: 8394306113243808932, guid: 9f3a3f4d1e3340345b529b2c57bb5793, type: 3}
   title: Attack Tower
   description: A tower
-  price: 600
+  price: 300
   rangeIndicator: {fileID: 8145395521657683061}
   placementCollider: {fileID: 1873122111820911156}
   spriteRenderer: {fileID: 8435420070142686825}
   placed: 0
   projectileSprite:
-    sprite: {fileID: 8386046605285993334, guid: 5af143a3e16fb3d4d8903beb9097461a, type: 3}
-    animator: {fileID: 1160356261127867848, guid: 5af143a3e16fb3d4d8903beb9097461a, type: 3}
+    sprite: {fileID: 1730718314223801271, guid: 439612fdf74ef0a40864960ad15c4e9c, type: 3}
+    animator: {fileID: 1160356261127867848, guid: 439612fdf74ef0a40864960ad15c4e9c, type: 3}
   forwardMovement:
     direction: {x: 0, y: 0}
     speed: 5
   damageOnHit:
-    damage: 20
+    damage: 5
   pierce:
-    pierce: 5
+    pierce: 3
   decayOverTime:
     lifetime: 5
   homing:
@@ -176,7 +184,7 @@ MonoBehaviour:
     angleSpeed: 180
     distance: 10
   range: 5
-  fireRate: 1.5
+  fireRate: 0.2
 --- !u!95 &-4964974298461241841
 Animator:
   serializedVersion: 7

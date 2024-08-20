@@ -208,8 +208,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healHp: 5
-  healRange: 3
-  healDelay: 3
+  healRange: 4
+  healDelay: 2
 --- !u!95 &4828330629663224695
 Animator:
   serializedVersion: 7

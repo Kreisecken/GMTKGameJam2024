@@ -355,7 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469740cded56ca04f9cb5ad3e644ad81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0.25
+  movementSpeed: 0.5
   target: {fileID: 0}
 --- !u!114 &5144202973330995873
 MonoBehaviour:
@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2fad0d078b91e46a732b731cf1848f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 30
+  maxHp: 75
   moneyOnDeath: 20
   deathAnimationTime: 0
 --- !u!114 &6192303753154794483
@@ -384,7 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095cb3c5b1f5bd84c9771c47489bc54a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 0.01
+  attackDamage: 0.05
   attackRange: 8
   attackDelay: 0.5
   projectileSprite:
@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 963707ea0d2973c46857f074bbe6a014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 0.01
+  attackDamage: 0.2
   attackRange: 1
   attackDelay: 1
   lifeStealFactor: 0

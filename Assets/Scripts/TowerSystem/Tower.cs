@@ -104,12 +104,19 @@ public class Tower : MonoBehaviour
         }
         else
         {
-            growth = new Vector3
-            (
-                left || right ? 0 : growthRate.x,
-                up || down ? 0 : growthRate.y,
-                0
-            );
+            if (GameStateManager.canStartRound)
+            {
+                growth = Vector3.zero;
+            }
+            else
+            {
+                growth = new Vector3
+                (
+                    left || right ? 0 : growthRate.x,
+                    up || down ? 0 : growthRate.y,
+                    0
+                );
+            }
         }
 
         transform.localScale += growth * Time.fixedDeltaTime;

@@ -181,6 +181,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growthRate: {x: 0, y: 0, z: 0}
+  growthBuyed: {x: 0, y: 0, z: 0}
+  verticalPrice: 100
+  horizontalPrice: 100
+  growthSpeed: 0.1
+  horizontalAmount: 1
+  horizontalMax: 1
+  verticalAmout: 1
+  verticalMax: 1
   icon: {fileID: -7219583629874787898, guid: 7bdcdc889ed61eb4ead53fa15e669226, type: 3}
   banner: {fileID: -7219583629874787898, guid: 7bdcdc889ed61eb4ead53fa15e669226, type: 3}
   title: Resource Tower
@@ -192,6 +200,9 @@ MonoBehaviour:
   placed: 0
   mineRate: 1
   mineAmount: 1
+  type: 0
+  minAmount: 1
+  maxAmount: 5
 --- !u!95 &-3294104874115523132
 Animator:
   serializedVersion: 7

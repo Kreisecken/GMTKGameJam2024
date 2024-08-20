@@ -390,10 +390,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growthRate: {x: 1, y: 1, z: 0}
+  growthBuyed: {x: 0, y: 0, z: 0}
+  verticalPrice: 100
+  horizontalPrice: 100
+  growthSpeed: 0.1
+  horizontalAmount: 1
+  horizontalMax: 1
+  verticalAmout: 1
+  verticalMax: 1
   icon: {fileID: 0}
   banner: {fileID: 0}
   title: Tower
   description: A tower
+  price: 100
+  rangeIndicator: {fileID: 0}
   placementCollider: {fileID: 8747326535911308888}
   spriteRenderer: {fileID: 5644328421862649609}
   placed: 0
@@ -574,16 +584,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growthRate: {x: -1, y: -1, z: 0}
+  growthBuyed: {x: 0, y: 0, z: 0}
+  verticalPrice: 100
+  horizontalPrice: 100
+  growthSpeed: 0.1
+  horizontalAmount: 1
+  horizontalMax: 1
+  verticalAmout: 1
+  verticalMax: 1
   icon: {fileID: 0}
   banner: {fileID: 0}
   title: Tower
   description: A tower
+  price: 100
+  rangeIndicator: {fileID: 1473758242655349767}
   placementCollider: {fileID: 1290280867375877034}
   spriteRenderer: {fileID: 2794675268308131209}
   placed: 0
-  rangeIndicator: {fileID: 1473758242655349767}
   projectileSprite:
     sprite: {fileID: 0}
+    animator: {fileID: 0}
   forwardMovement:
     direction: {x: 0, y: 0}
     speed: 5

@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
             Die();
             return;
         }
-        float scale = Mathf.Pow(hp / maxHp, 0.75f);
+        float scale = 0.75f * Mathf.Pow(hp / maxHp, 0.75f) + 0.25f;
         transform.localScale = new Vector3(scale, scale, 0f);
         
         animator.SetTrigger("Hit");
@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
         hp = Mathf.Min(hp + health, maxHp);
         
         if(hp < 1f) return; // possible when an enemy is killed (with negative health) and healed in the same tick
-        float scale = Mathf.Pow(hp / maxHp, 0.75f);
+        float scale = 0.75f * Mathf.Pow(hp / maxHp, 0.75f) + 0.25f;
         transform.localScale = new Vector3(scale, scale, 0f);
     }
     

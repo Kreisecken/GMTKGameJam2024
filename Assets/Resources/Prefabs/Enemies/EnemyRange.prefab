@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469740cded56ca04f9cb5ad3e644ad81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1
+  movementSpeed: 2
   target: {fileID: 0}
 --- !u!114 &5144202973330995873
 MonoBehaviour:
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095cb3c5b1f5bd84c9771c47489bc54a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 0.01
+  attackDamage: 0.05
   attackRange: 8
   attackDelay: 1
   projectileSprite:

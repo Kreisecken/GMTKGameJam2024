@@ -383,10 +383,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 963707ea0d2973c46857f074bbe6a014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 0.01
+  attackDamage: 0.05
   attackRange: 2
   attackDelay: 1
-  lifeStealFactor: 2
+  lifeStealFactor: 50
 --- !u!95 &3946184703131367579
 Animator:
   serializedVersion: 7

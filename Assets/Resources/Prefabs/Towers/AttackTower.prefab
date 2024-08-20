@@ -149,12 +149,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ecea2d688fdf034da3c4724590f6d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthRate: {x: 1, y: 1, z: 0}
+  growthRate: {x: 0.1, y: 0.1, z: 0}
+  growthBuyed: {x: 0, y: 0, z: 0}
+  verticalPrice: 100
+  horizontalPrice: 100
+  growthSpeed: 0.1
+  horizontalAmount: 1
+  horizontalMax: 1
+  verticalAmout: 1
+  verticalMax: 1
   icon: {fileID: 1402278300905310618, guid: 47ddd465dc4f52644abf077832ef1113, type: 3}
   banner: {fileID: 1402278300905310618, guid: 47ddd465dc4f52644abf077832ef1113, type: 3}
   title: Attack Tower
   description: A tower
-  price: 200
+  price: 400
   rangeIndicator: {fileID: 8145395521657683061}
   placementCollider: {fileID: 1873122111820911156}
   spriteRenderer: {fileID: 8435420070142686825}
@@ -166,7 +174,7 @@ MonoBehaviour:
     direction: {x: 0, y: 0}
     speed: 5
   damageOnHit:
-    damage: 5
+    damage: 3
   pierce:
     pierce: 2
   decayOverTime:

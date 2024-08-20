@@ -236,12 +236,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ecea2d688fdf034da3c4724590f6d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthRate: {x: 1, y: 1, z: 0}
+  growthRate: {x: 0.1, y: 0.1, z: 0}
+  growthBuyed: {x: 0, y: 0, z: 0}
+  verticalPrice: 100
+  horizontalPrice: 100
+  growthSpeed: 0.1
+  horizontalAmount: 1
+  horizontalMax: 1
+  verticalAmout: 1
+  verticalMax: 1
   icon: {fileID: -7245253820238253342, guid: bb77e07d182fc334f918adba758c1505, type: 3}
   banner: {fileID: -7245253820238253342, guid: bb77e07d182fc334f918adba758c1505, type: 3}
   title: Fast Attack Tower
   description: C tower
-  price: 500
+  price: 700
   rangeIndicator: {fileID: 1704169408200446661}
   placementCollider: {fileID: 3477205542754066613}
   spriteRenderer: {fileID: 575776360995957515}
@@ -253,7 +261,7 @@ MonoBehaviour:
     direction: {x: 0, y: 0}
     speed: 5
   damageOnHit:
-    damage: 3
+    damage: 2
   pierce:
     pierce: 1
   decayOverTime:

@@ -27,7 +27,7 @@ public class ResourceMiner : PlaceableTower
     {
         if (!placed) return;
 
-        if (Enemy.Enemies.Count != 0) internalMineRate -= Time.deltaTime; // TODO: optimize enemy-count-check (?) (by adding a statically accessible boolean variable that stores if a round is currently active (enemies are alive))
+        if (!GameStateManager.canStartRound) internalMineRate -= Time.deltaTime; // only continue time when round is active
 
         if (internalMineRate <= 0)
         {

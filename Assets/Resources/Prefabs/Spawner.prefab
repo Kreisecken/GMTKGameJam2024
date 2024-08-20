@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6175301301764919531}
   - component: {fileID: 5948265387978078162}
   - component: {fileID: 4714872677472966525}
+  - component: {fileID: -3559173886733305068}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -26,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2694818221611384726}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5948265387978078162
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -77,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 0.4292453, b: 0.4292453, a: 1}
+  m_Sprite: {fileID: 6435191197594952142, guid: 486ca7253bb80ee4ab69ac333f3bf740, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,12 +104,33 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 6191512741893426085, guid: a64d560e1055e5041812f27e0c24e150, type: 3}
   - {fileID: 6191512741893426085, guid: 9fcef007422fd5448b1c54bd0bbe9e0f, type: 3}
+  - {fileID: 6191512741893426085, guid: cc208c0e9fb5a7444855ed492675d0e8, type: 3}
   - {fileID: 6191512741893426085, guid: 601a3a0afd9a3e14cb35a8d570b11477, type: 3}
   - {fileID: 6191512741893426085, guid: 7c4f48bd6e0faa24a82d0f604bde4ab7, type: 3}
-  - {fileID: 6191512741893426085, guid: d1801b93b1177974e9df3e9220f36cac, type: 3}
-  - {fileID: 6191512741893426085, guid: cc208c0e9fb5a7444855ed492675d0e8, type: 3}
   - {fileID: 6191512741893426085, guid: cc12957041cb12b4c8d19144cc98bdf0, type: 3}
-  spawnCounts: 00000000050000000000000000000000000000000000000000000000
+  spawnCounts: 000000000500000000000000000000000000000000000000
   spawnDelay: 1
   startDelay: 5
   enemyTarget: {fileID: 0}
+--- !u!95 &-3559173886733305068
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2694818221611384726}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: -8238003468684383236, guid: 486ca7253bb80ee4ab69ac333f3bf740, type: 3}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
