@@ -16,6 +16,13 @@ public class RangeAttack : MonoBehaviour
     
     private float attackTimer = 0f;
     
+    private Animator animator;
+    
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+    
     void FixedUpdate()
     {
         attackTimer -= Time.fixedDeltaTime;
@@ -24,6 +31,7 @@ public class RangeAttack : MonoBehaviour
             attackTimer += attackDelay;
             if(Tower.TryGetClosestTower(transform.position, attackRange, out Tower tower))
             {
+                animator.SetTrigger("AttackRange");
                 // Projectile.CreateProjectile(projectilePrefab).FireProjectile(transform.position, (tower.transform.position - transform.position).normalized);
                 ProjectileInstantiator.CreateProjectile(transform.position, (tower.transform.position - transform.position).normalized)
                     .InteractWithTowers()

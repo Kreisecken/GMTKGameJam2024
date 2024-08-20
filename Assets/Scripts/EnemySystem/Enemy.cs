@@ -9,8 +9,11 @@ public class Enemy : MonoBehaviour
     
     public float maxHp = 10f;
     public int moneyOnDeath = 10;
+    public float deathAnimationTime = 1f;
 
     private float hp;
+
+    private Animator animator;
 
     public void Awake()
     {
@@ -20,23 +23,26 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         hp = maxHp;
+        
+        animator = GetComponent<Animator>();
     }
 
     public void OnDestroy()
     {
-        Enemies.Remove(this);
-        PlayerInventory.Instance.AddMoney(moneyOnDeath); // TODO: drop collectable money instead (if the player was not removed)
+        Enemies.Remove(this); // should be redundant
     }
 
     public void Damage(float dmg) {
         hp -= dmg;
         
         if(hp < 1f) {
-            Destroy(gameObject);
+            Die();
             return;
         }
         float scale = Mathf.Pow(hp / maxHp, 0.75f);
         transform.localScale = new Vector3(scale, scale, 0f);
+        
+        animator.SetTrigger("Hit");
     }
     
     public void Heal(float health) {
@@ -49,6 +55,12 @@ public class Enemy : MonoBehaviour
     
     public bool IsFullHp() {
         return hp >= maxHp;
+    }
+
+    private void Die() {
+        Enemies.Remove(this);
+        PlayerInventory.Instance.AddMoney(moneyOnDeath); // TODO: drop collectable money instead (if the player was not removed)
+        Destroy(gameObject, deathAnimationTime);
     }
 
     public static List<Enemy> GetEnemiesInRange(Vector3 position, float range)

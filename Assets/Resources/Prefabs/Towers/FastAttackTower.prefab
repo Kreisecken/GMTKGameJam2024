@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 575776360995957515}
   - component: {fileID: 3477205542754066613}
   - component: {fileID: 5330771659579964883}
+  - component: {fileID: 4293549644073182910}
   m_Layer: 0
   m_Name: FastAttackTower
   m_TagString: Untagged
@@ -240,6 +241,7 @@ MonoBehaviour:
   banner: {fileID: -3044911555476299917, guid: dc7d6506e629d7e4f99c1ea8bc220823, type: 3}
   title: Fast Attack Tower
   description: C tower
+  price: 100
   placementCollider: {fileID: 3477205542754066613}
   spriteRenderer: {fileID: 575776360995957515}
   placed: 0
@@ -261,3 +263,25 @@ MonoBehaviour:
     distance: 10
   range: 5
   fireRate: 0.1
+--- !u!95 &4293549644073182910
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6495093361252962344}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bf6e0332fa6dba24cbaa97ca8b984f84, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8435420070142686825}
   - component: {fileID: 1873122111820911156}
   - component: {fileID: 66871924030787747}
+  - component: {fileID: -4964974298461241841}
   m_Layer: 0
   m_Name: AttackTower
   m_TagString: Untagged
@@ -153,6 +154,7 @@ MonoBehaviour:
   banner: {fileID: 3124352740388889510, guid: cfb5596cc96d6bf4cab0c3f85c80422e, type: 3}
   title: Attack Tower
   description: A tower
+  price: 100
   placementCollider: {fileID: 1873122111820911156}
   spriteRenderer: {fileID: 8435420070142686825}
   placed: 0
@@ -174,6 +176,28 @@ MonoBehaviour:
     distance: 10
   range: 5
   fireRate: 0.1
+--- !u!95 &-4964974298461241841
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457411931946604169}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bf6e0332fa6dba24cbaa97ca8b984f84, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8145395521657683061
 GameObject:
   m_ObjectHideFlags: 0

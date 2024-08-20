@@ -9,6 +9,13 @@ public class MeleeAttack : MonoBehaviour
     
     private float attackTimer = 0f;
     
+    private Animator animator;
+    
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+    
     void FixedUpdate()
     {
         attackTimer -= Time.fixedDeltaTime;
@@ -19,6 +26,7 @@ public class MeleeAttack : MonoBehaviour
             // attack nearest Tower
             if (Tower.TryGetClosestTower(transform.position, attackRange, out Tower tower)) 
             {
+                animator.SetTrigger("AttackMelee");
                 tower.Damage(attackDamage);
                 if(lifeStealFactor != 0f) 
                 {

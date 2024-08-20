@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2920037005375360404}
   - component: {fileID: 5948216950490901603}
   - component: {fileID: 3789823775143517134}
+  - component: {fileID: 6999411406760970875}
   m_Layer: 0
   m_Name: SimpleTower
   m_TagString: Untagged
@@ -102,23 +103,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ecea2d688fdf034da3c4724590f6d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  growthRate: {x: 1, y: 1, z: 0}
+  icon: {fileID: 0}
+  banner: {fileID: 0}
+  title: Tower
+  description: A tower
+  price: 100
   placementCollider: {fileID: 3789823775143517134}
   spriteRenderer: {fileID: 2920037005375360404}
   placed: 0
-  colliding: 0
-  left: 0
-  right: 0
-  up: 0
-  down: 0
-  growthRate: {x: 1, y: 1, z: 0}
-  cost: 1
-  sellRate: 0.5
   rangeIndicator: {fileID: 6197114699482769643}
   projectileSprite:
     sprite: {fileID: 6812895125178730584, guid: 3e7be7bca448e3943b9dc8ad09523855, type: 3}
   forwardMovement:
     direction: {x: 0, y: 0}
     speed: 5
+  damageOnHit:
+    damage: 1
   pierce:
     pierce: 1
   decayOverTime:
@@ -175,6 +176,28 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &6999411406760970875
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85460804991512643}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bf6e0332fa6dba24cbaa97ca8b984f84, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6197114699482769643
 GameObject:
   m_ObjectHideFlags: 0
